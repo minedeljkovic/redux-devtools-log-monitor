@@ -17,9 +17,9 @@ const renderActionType = (action) => {
   let subActionType = '';
   if (action.action) {
     subActionType = ` > ${renderActionType(action.action)}`;
-  };
+  }
   return `${action.type}${subActionType}`;
-}
+};
 
 
 export default class LogMonitorAction extends Component {
