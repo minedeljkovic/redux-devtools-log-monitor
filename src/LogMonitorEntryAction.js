@@ -13,6 +13,15 @@ const styles = {
   }
 };
 
+const renderActionType = (action) => {
+  let subActionType = '';
+  if (action.action) {
+    subActionType = ` > ${renderActionType(action.action)}`;
+  };
+  return `${action.type}${subActionType}`;
+}
+
+
 export default class LogMonitorAction extends Component {
   renderPayload(payload) {
     return (
@@ -30,7 +39,8 @@ export default class LogMonitorAction extends Component {
   }
 
   render() {
-    const { type, ...payload } = this.props.action;
+    const { action } = this.props;
+    const { type, ...payload } = action;
     return (
       <div style={{
         backgroundColor: this.props.theme.base02,
@@ -39,7 +49,7 @@ export default class LogMonitorAction extends Component {
       }}>
         <div style={styles.actionBar}
           onClick={this.props.onClick}>
-          {type}
+          {renderActionType(action)}
         </div>
         {!this.props.collapsed ? this.renderPayload(payload) : ''}
       </div>
