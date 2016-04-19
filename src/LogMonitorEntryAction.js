@@ -23,6 +23,11 @@ const renderActionType = (action) => {
 
 
 export default class LogMonitorAction extends Component {
+  constructor(props) {
+    super(props);
+    this.shouldExpandNode = this.shouldExpandNode.bind(this);
+  }
+
   renderPayload(payload) {
     return (
       <div style={{
@@ -31,11 +36,15 @@ export default class LogMonitorAction extends Component {
       }}>
         { Object.keys(payload).length > 0 ?
           <JSONTree theme={this.props.theme}
-                    keyName={'action'}
+                    keyPath={['action']}
                     data={payload}
-                    expandRoot={this.props.expandActionRoot} /> : '' }
+                    shouldExpandNode={this.shouldExpandNode} /> : '' }
       </div>
     );
+  }
+
+  shouldExpandNode() {
+    return this.props.expandActionRoot;
   }
 
   render() {

@@ -52,11 +52,12 @@
     "webpack": "^1.11.0"
   },
   "peerDependencies": {
-    "react": "^0.14.0",
+    "react": "^0.14.0 || ^15.0.0-0",
     "redux-devtools": "^3.0.0"
   },
   "dependencies": {
-    "react-json-tree": "^0.5.1",
+    "lodash.debounce": "^4.0.4",
+    "react-json-tree": "^0.6.6",
     "react-pure-render": "^1.0.2",
     "redux-devtools-themes": "^1.0.0"
   }
